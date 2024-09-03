@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Company.Web
 {
+    //session04
     public class Program
     {
-        //session04
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
