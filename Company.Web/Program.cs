@@ -7,6 +7,7 @@ namespace Company.Web
 {
     public class Program
     {
+        //session04
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
