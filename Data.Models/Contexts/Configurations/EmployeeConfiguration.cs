@@ -16,6 +16,7 @@ namespace Company.Data.Contexts.Configurations
             builder.Property(E => E.Name)
                    .IsRequired(true)
                    .HasMaxLength(50);
+            builder.Property(E => E.ImageUrl).IsRequired(false);
         }
     }
 }
