@@ -15,5 +15,6 @@ namespace Company.Services.Interfaces
         void Add(Employee employee);
         void Update(Employee employee);
         void Delete(Employee employee);
+        IEnumerable<Employee> GetEmployeesByName(string name);
     }
 }

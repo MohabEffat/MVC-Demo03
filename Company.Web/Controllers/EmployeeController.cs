@@ -13,10 +13,15 @@ namespace Company.Web.Controllers
         {
             _employeeService = employeeService;
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchInp)
         {
-            var employees = _employeeService.GetAll();
+            IEnumerable<Employee> employees = new List<Employee>();
+            if (string.IsNullOrEmpty(searchInp))
+                employees = _employeeService.GetAll();
+            else
+                employees = _employeeService.GetEmployeesByName(searchInp);
             return View(employees);
+
         }
         public IActionResult Add()
         {
