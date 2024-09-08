@@ -56,6 +56,9 @@ namespace Company.Services.Services
 
         }
 
+        public IEnumerable<Employee> GetEmployeesByName(string name)
+            => _unitOfWork.EmployeeRepository.GetEmployeesByAddress(name);
+
         public void Update(Employee employee)
         {
             _unitOfWork.EmployeeRepository.Update(employee);
