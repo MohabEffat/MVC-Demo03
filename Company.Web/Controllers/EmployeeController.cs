@@ -1,5 +1,6 @@
 ﻿using Company.Data.Models;
 using Company.Services.Interfaces;
+using Company.Services.Interfaces.Dto;
 using Company.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,14 +9,16 @@ namespace Company.Web.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IDepartmentService _departmentService;
 
-        public EmployeeController(IEmployeeService employeeService)
+        public EmployeeController(IEmployeeService employeeService, IDepartmentService departmentService)
         {
             _employeeService = employeeService;
+            _departmentService = departmentService;
         }
         public IActionResult Index(string searchInp)
         {
-            IEnumerable<Employee> employees = new List<Employee>();
+            IEnumerable<EmployeeDto> employees = new List<EmployeeDto>();
             if (string.IsNullOrEmpty(searchInp))
                 employees = _employeeService.GetAll();
             else
@@ -25,10 +28,11 @@ namespace Company.Web.Controllers
         }
         public IActionResult Add()
         {
+            ViewBag.departments = _departmentService.GetAll();
             return View();
         }
         [HttpPost]
-        public IActionResult Add(Employee employee)
+        public IActionResult Add(EmployeeDto employee)
         {
             _employeeService.Add(employee);
             return RedirectToAction("Index");
@@ -46,7 +50,7 @@ namespace Company.Web.Controllers
             return Details(id, "Update");
         }
         [HttpPost]
-        public IActionResult Update(int? id, Employee employee)
+        public IActionResult Update(int? id, EmployeeDto employee)
         {
             if (employee.Id != id!.Value)
                 return RedirectToAction("NotFoundPage", null, "Home");

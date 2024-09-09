@@ -18,8 +18,8 @@ namespace Company.Repository.Repositories
             _context = context;
         }
 
-        public IEnumerable<Employee> GetEmployeeByName(string name)
-            => _context.Employees.Where(E => E.Name.Trim().ToLower().Contains(name.Trim().ToLower())).ToList();
+        public IEnumerable<Employee> GetEmployeesByName(string name)
+            => _context.employees.Where(E => E.Name.Trim().ToLower().Contains(name.Trim().ToLower())).ToList();
 
         public IEnumerable<Employee> GetEmployeesByAddress(string address)
         {
