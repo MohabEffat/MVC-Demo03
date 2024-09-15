@@ -9,11 +9,13 @@ namespace Company.Web.Controllers
     public class DepartmentController : Controller
     {
         private readonly IDepartmentService _departmentService;
+		private readonly IWebHostEnvironment _env;
 
-        public DepartmentController(IDepartmentService departmentService )
+		public DepartmentController(IDepartmentService departmentService, IWebHostEnvironment env)
         {
             _departmentService = departmentService;
-        }
+			_env = env;
+		}
         public IActionResult Index()
         {
             var departments = _departmentService.GetAll();
@@ -45,7 +47,7 @@ namespace Company.Web.Controllers
             }
         }
 
-        public IActionResult Details(int? id, string viewName = "Details")
+        public IActionResult Details([FromRoute]int? id, string viewName = "Details")
         {
             var department = _departmentService.GetById(id.Value);
             if (department is null)
@@ -59,12 +61,27 @@ namespace Company.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(int? id, DepartmentDto department)
+        public IActionResult Update([FromRoute] int? id, DepartmentDto department)
         {
             if(department.Id != id.Value)
                 return RedirectToAction("NotFoundPage", null, "Home");
-            _departmentService.Update(department);
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid)
+                return View(department);
+            try
+            {
+				_departmentService.Update(department);
+				return RedirectToAction("Index");
+			}
+            catch (Exception ex)
+            {
+
+                if (_env.IsDevelopment())
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                else
+					ModelState.AddModelError(string.Empty, "An Error Has Occured");
+                return View(department);
+			}
+
         }
         public IActionResult Delete(int id)
         {

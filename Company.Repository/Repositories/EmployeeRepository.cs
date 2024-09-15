@@ -11,11 +11,11 @@ namespace Company.Repository.Repositories
 {
     internal class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
-        private readonly CompanyDbContext _context;
+        //private readonly CompanyDbContext _context;
 
         public EmployeeRepository(CompanyDbContext context) : base(context) 
         {
-            _context = context;
+            //_context = context;
         }
 
         public IEnumerable<Employee> GetEmployeesByName(string name)

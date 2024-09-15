@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace Company.Services.Interfaces.Dto
 {
     public class EmployeeDto
     {
         public int Id { get; set; }
+        [MinLength(4, ErrorMessage = "Min Length is 4")]
         public string Name { get; set; }
         public int Age { get; set; }
         public string Address { get; set; }
