@@ -1,40 +1,42 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V8</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 
+	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
+	<!-- Font Awesome Icons -->
 	<link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
+	<!-- Animations and other libraries -->
 	<link rel="stylesheet" type="text/css" href="~/animate/animate.css">
-
-	<link rel="stylesheet" type="text/css" href="~/css-hamburgers/hamburgers.min.css">
-
 	<link rel="stylesheet" type="text/css" href="~/animsition/css/animsition.min.css">
-
 	<link rel="stylesheet" type="text/css" href="~/select2/select2.min.css">
-
 	<link rel="stylesheet" type="text/css" href="~/daterangepicker/daterangepicker.css">
-
+	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="~/css/util.css">
-
-	<link rel="stylesheet" type="text/css" href="~/css/main.css"> 
+	<link rel="stylesheet" type="text/css" href="~/css/main.css">
 </head>
 <body>
 
-	<div class="limiter">
+	<div class="limiter d-flex align-items-center justify-content-center min-vh-100">
 		<div class="container-login100">
-			<div class="wrap-login100">
+			<div class="wrap-login100 p-5 shadow-lg rounded bg-white">
+				<!-- Title or Logo -->
+				<div class="text-center mb-4">
+					<h2 class="mb-0">Login</h2>
+					<p class="text-muted">Please login to your account</p>
+				</div>
+
+				<!-- Main content rendered here -->
 				@RenderBody()
 			</div>
 		</div>
 	</div>
 
-
+	<!-- jQuery, Bootstrap, and other scripts -->
 	<script src="~/jquery/jquery-3.2.1.min.js"></script>
 	<script src="~/animsition/js/animsition.min.js"></script>
 	<script src="~/bootstrap/js/popper.js"></script>
