@@ -1,25 +1,29 @@
 ﻿@model DepartmentDto
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Department Details";
 }
-<h1>Department Details</h1>
+<h1 class="mb-4">@ViewData["Title"]</h1>
 
-<br />
-<br />
-<form asp-action="Update" asp-route-id="@Model.Id">
-    <div class="form-group">
-        <label class="col-form-label" asp-for="Code"></label>
-        <input type="text" asp-for="Code" class="form-control" readonly />
-    </div>
-    <div class="form-group">
-        <label class="col-form-label" asp-for="Name"></label>
-        <input type="text" asp-for="Name" class="form-control" readonly />
-    </div>
-    <div class="form-group">
-        <label class="col-form-label" asp-for="CreateAt"></label>
-        <input asp-for="CreateAt" class="form-control" readonly />
-    </div>
+<div class="card p-4">
+    <form asp-action="Update" asp-route-id="@Model.Id">
+        <div class="mb-3">
+            <label asp-for="Code" class="form-label"></label>
+            <input type="text" asp-for="Code" class="form-control" readonly />
+        </div>
 
-    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-light">Update </a>
-    <a asp-action="Index" class="btn btn-light">Back To List</a>
-</form>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input type="text" asp-for="Name" class="form-control" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CreateAt" class="form-label"></label>
+            <input asp-for="CreateAt" class="form-control" readonly />
+        </div>
+
+        <div class="mt-4">
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary me-2">Update</a>
+            <a asp-action="Index" class="btn btn-secondary">Back To List</a>
+        </div>
+    </form>
+</div>

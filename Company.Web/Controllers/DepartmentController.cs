@@ -1,11 +1,14 @@
 ﻿using Company.Data.Models;
 using Company.Services.Interfaces;
 using Company.Services.Interfaces.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Company.Web.Controllers
 {
+
+    [Authorize]
     public class DepartmentController : Controller
     {
         private readonly IDepartmentService _departmentService;
@@ -49,7 +52,7 @@ namespace Company.Web.Controllers
 
         public IActionResult Details([FromRoute]int? id, string viewName = "Details")
         {
-            var department = _departmentService.GetById(id.Value);
+            var department = _departmentService.GetById(id!.Value);
             if (department is null)
                 return RedirectToAction("NotFoundPage", null, "Home");
 
