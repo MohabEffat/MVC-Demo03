@@ -2,10 +2,13 @@
 using Company.Services.Interfaces;
 using Company.Services.Interfaces.Dto;
 using Company.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Company.Web.Controllers
 {
+    [Authorize]
+
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;

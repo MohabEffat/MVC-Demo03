@@ -1,40 +1,49 @@
 ﻿@model EmployeeDto
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Employee Details";
 }
-<h1>Employee Details</h1>
-<br />
-<br />
+<h1 class="mb-4">@ViewData["Title"]</h1>
 
-<form asp-action="Add" asp-route-id="@Model.Id">
-    <div class="form-group">
-        <label class="col-form-label" asp-for="Name"></label>
-        <input type="text" asp-for="Name" class="form-control" readonly />
-    </div>
+<div class="card p-4">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input type="text" asp-for="Name" class="form-control" readonly />
+        </div>
 
-    <div class="form-group">
-        <label class="col-form-label" asp-for="Address"></label >
-        <input type="text" asp-for="Address" class="form-control" readonly />
-    </div>
-    <div class="form-group">
-        <label class="col-form-label" asp-for="Age"></label>
-        <input type="text" asp-for="Age" class="form-control" readonly />
+        <div class="col-md-6 mb-3">
+            <label asp-for="Age" class="form-label"></label>
+            <input type="text" asp-for="Age" class="form-control" readonly />
+        </div>
     </div>
 
-    <div class="form-group">
-        <label class="col-form-label" asp-for="Email"></label>
-        <input type="text" asp-for="Email" class="form-control" readonly />
-    </div>
-    <div class="form-group">
-        <label class="col-form-label" asp-for="Salary"></label>
-        <input type="text" asp-for="Salary" class="form-control" readonly />
-    </div>
-    <div class="form-group">
-        <label class="col-form-label" asp-for="PhoneNumber"></label>
-        <input type="text" asp-for="PhoneNumber" class="form-control" readonly />
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input type="text" asp-for="Email" class="form-control" readonly />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="PhoneNumber" class="form-label"></label>
+            <input type="text" asp-for="PhoneNumber" class="form-control" readonly />
+        </div>
     </div>
 
-    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-light">Update </a>
-    <a asp-action="Index" class="btn btn-light">Back To List</a>
-</form>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Address" class="form-label"></label>
+            <input type="text" asp-for="Address" class="form-control" readonly />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Salary" class="form-label"></label>
+            <input type="text" asp-for="Salary" class="form-control" readonly />
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary me-2">Update</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

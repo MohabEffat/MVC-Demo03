@@ -37,12 +37,12 @@ namespace Company.Web.Controllers
                 var result = await _userManager.CreateAsync(user, input.Password);
 
                 if (result.Succeeded)
-                    return RedirectToAction("SignIn");
+                    return RedirectToAction("Login");
 
                 foreach (var error in result.Errors)
                     ModelState.AddModelError("", error.Description);
             }
-            return View();
+            return View(input);
         }
         #endregion
 
@@ -107,7 +107,7 @@ namespace Company.Web.Controllers
 
                     var email = new Email
                     {
-                        Body = url,
+                        Body = url!,
                         Subject = "Reset Password",
                         To = input.Email
                     };
